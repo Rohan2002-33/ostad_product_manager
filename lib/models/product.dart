@@ -3,6 +3,7 @@ class Product {
   final String productName;
   final int productCode;
   final String imageUrl;
+  final String description;
   final int quantity;
   final double unitPrice;
   final double totalPrice;
@@ -12,6 +13,7 @@ class Product {
     required this.productName,
     required this.productCode,
     required this.imageUrl,
+    required this.description,
     required this.quantity,
     required this.unitPrice,
     required this.totalPrice,
@@ -24,6 +26,12 @@ class Product {
           (json['ProductName'] ?? json['productName'] ?? '').toString(),
       productCode: _toInt(json['ProductCode'] ?? json['productCode']),
       imageUrl: (json['Img'] ?? json['img'] ?? json['image'] ?? '').toString(),
+        description: (json['Description'] ??
+            json['description'] ??
+            json['Details'] ??
+            json['details'] ??
+            '')
+          .toString(),
       quantity: _toInt(json['Qty'] ?? json['qty'] ?? json['quantity']),
       unitPrice:
           _toDouble(json['UnitPrice'] ?? json['unitPrice']),
@@ -37,6 +45,7 @@ class Product {
       'ProductName': productName,
       'ProductCode': productCode,
       'Img': imageUrl,
+      'Description': description,
       'Qty': quantity,
       'UnitPrice': unitPrice,
       'TotalPrice': totalPrice,
